@@ -35,16 +35,23 @@
           th:object="${newCourse}"
           method="post"
           style="text-align:center; margin-top:90px; font-size: 15px;">
-        <input type="hidden" name = "id" th:field="*{courseId}">
-        <input type="text"  name="Course Name" th:field="*{course_name}" placeholder="Course Name">
+        <label>
+            <input type="text"  name="Course Name" th:field="*{course_name}" placeholder="Course Name">
+        </label>
         <br><br>
         <input type="date"  name="Local Date" th:field="*{dateOfStart}" placeholder="Date of Start">
         <br><br>
-        <input type="number" name="Duration" th:field="*{duration}" placeholder="Duration">
+        <label>
+            <input type="number" name="Duration" th:field="*{duration}" placeholder="Duration">
+        </label>
         <br><br>
-        <input type="text" name="Image" th:field="*{image}" placeholder="Image">
+        <label>
+            <input type="text" name="Image" th:field="*{image}" placeholder="Image">
+        </label>
         <br><br>
-        <input type="text" name="Description" th:field="*{description}" placeholder="Description">
+        <label>
+            <input type="text" name="Description" th:field="*{description}" placeholder="Description">
+        </label>
         <br><br>
 
         <input type="submit" value="Add">

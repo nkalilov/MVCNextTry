@@ -1,7 +1,6 @@
 package peaksoft.configs;
 
 import org.apache.commons.dbcp2.BasicDataSource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -26,7 +25,6 @@ import java.util.Properties;
 public class JPAConfig implements WebMvcConfigurer {
     private final ApplicationContext applicationContext;
 
-    @Autowired
     public JPAConfig(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
@@ -69,7 +67,7 @@ public class JPAConfig implements WebMvcConfigurer {
         Properties properties = new Properties();
         properties.put("hibernate.show_sql", "true");
         properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-        properties.put("hibernate.hbm2ddl.auto", "none");
+        properties.put("hibernate.hbm2ddl.auto", "update");
         return properties;
     }
 

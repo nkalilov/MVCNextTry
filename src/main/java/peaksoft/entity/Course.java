@@ -38,13 +38,13 @@ public class Course {
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.REFRESH,
-            CascadeType.DETACH}, mappedBy = "courses")
+            CascadeType.DETACH},mappedBy = "courses")
     private List<Instructor> instructors;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "course")
     private List<Student> students;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "courses")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "courses")
     private List<Lesson> lessons;
 
     @ManyToOne(cascade = {

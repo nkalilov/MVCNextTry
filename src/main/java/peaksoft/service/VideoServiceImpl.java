@@ -25,8 +25,8 @@ public class VideoServiceImpl implements VideoService{
     }
 
     @Override
-    public void updateVideo(Long id,Video video) {
-        videoDao.updateVideo(id,video);
+    public void updateVideo(Long id,String videoName, String link) {
+        videoDao.updateVideo(id,videoName,link);
     }
 
     @Override

@@ -8,7 +8,7 @@ import peaksoft.entity.Lesson;
 import peaksoft.service.LessonService;
 
 @Controller
-@RequestMapping("lessons")
+@RequestMapping("/lessons")
 public class LessonController {
     private final LessonService lessonService;
 
@@ -24,14 +24,14 @@ public class LessonController {
         return "lesson/mainLesson";
     }
 
-    @GetMapping("{courseId}/newLesson")
+    @GetMapping("/{courseId}/newLesson")
     private String newLesson(@PathVariable("courseId")Long id,Model model) {
         model.addAttribute("newLesson",new Lesson());
         model.addAttribute("courseId",id);
         return "lesson/newLesson";
     }
 
-    @PostMapping("{courseId}/saveLesson")
+    @PostMapping("/{courseId}/saveLesson")
     private String saveLesson(@PathVariable("courseId")Long id, @ModelAttribute("newLesson")Lesson lesson) {
         lessonService.saveLesson(id,lesson);
         return "redirect:/lessons/allLessons/ " + id;
@@ -51,7 +51,7 @@ public class LessonController {
         return "lesson/updateLesson";
     }
 
-    @PostMapping("/{courseId}/{lessonId}/saveUpdateLesson")
+    @PatchMapping("/{courseId}/{lessonId}/saveUpdateLesson")
     private String saveUpdateLesson(@PathVariable("courseId")Long courseId,
                                     @PathVariable("lessonId")Long lessonId,
                                     @ModelAttribute("lesson")Lesson lesson) {
@@ -59,7 +59,7 @@ public class LessonController {
         return "redirect:/lessons/allLessons/ " + courseId;
     }
 
-    @PostMapping("/{courseId}/{lessonId}/deleteLesson")
+    @DeleteMapping("/{courseId}/{lessonId}/deleteLesson")
     private String deleteLesson(@PathVariable("courseId")Long id,@PathVariable("lessonId")Long lessonId) {
         lessonService.deleteLessonById(lessonId);
         return "redirect:/lessons/allLessons/" + id;

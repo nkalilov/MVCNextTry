@@ -52,11 +52,11 @@ public class VideoController {
         return "video/updateVideo";
     }
 
-    @PostMapping("/{lessonId}/{videoId}/saveUpdateVideo")
+    @PatchMapping("/{lessonId}/{videoId}/saveUpdateVideo")
     private String saveUpdateVideo(@PathVariable("lessonId")Long id,
                                    @PathVariable("videoId")Long videoId,
                                    @ModelAttribute("video")Video video) {
-        videoService.updateVideo(videoId,video);
+        videoService.updateVideo(videoId,video.getVideoName(),video.getLink());
         return "redirect:/videos/allVideos/ " + id;
     }
 

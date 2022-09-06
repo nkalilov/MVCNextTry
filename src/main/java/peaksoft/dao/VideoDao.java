@@ -8,7 +8,7 @@ public interface VideoDao {
 
     void saveVideo(Long lessonId, Video video);
 
-    void updateVideo(Long id,Video video);
+    void updateVideo(Long id,String videoName,String link);
 
     Video getVideoById(Long id);
 

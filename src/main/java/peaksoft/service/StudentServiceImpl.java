@@ -2,6 +2,7 @@ package peaksoft.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import peaksoft.dao.StudentDao;
 import peaksoft.entity.Student;
 
@@ -9,7 +10,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
+@EnableTransactionManagement
 public class StudentServiceImpl implements StudentService{
 
     private final StudentDao studentDao;

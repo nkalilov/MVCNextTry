@@ -11,7 +11,7 @@ import peaksoft.service.TaskService;
 import java.util.List;
 
 @Controller
-@RequestMapping("tasks")
+@RequestMapping("/tasks")
 public class TaskController {
     private final TaskService taskService;
 
@@ -64,9 +64,9 @@ public class TaskController {
     }
 
 
-    @PostMapping("/{lessonId}/{taskId}/deleteTask")
+    @GetMapping("/{lessonId}/{taskId}/deleteTask")
     private String deleteTask(@PathVariable("lessonId")Long id,@PathVariable("taskId")Long taskId) {
         taskService.deleteTaskById(taskId);
-        return "redirect:/tasks/allTasks/ " + id;
+        return "redirect:/tasks/allTasks/ "+id;
     }
 }

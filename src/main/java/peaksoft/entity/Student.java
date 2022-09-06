@@ -26,7 +26,7 @@ public class Student {
     @Column(unique = true)
     private String email;
     @Column(name = "study_format")
-    @Enumerated(value = EnumType.STRING)
+//    @Enumerated(value = EnumType.STRING)
     public StudyFormat studyFormat;
 
     @ManyToOne(cascade = {CascadeType.DETACH,

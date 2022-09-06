@@ -1,5 +1,6 @@
 package peaksoft.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,18 +16,13 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/students")
+@RequiredArgsConstructor
 public class StudentController {
 
     private final StudentService studentService;
     private final CourseService courseService;
     private final CompanyService companyService;
 
-    @Autowired
-    public StudentController(StudentService studentService, CourseService courseService, CompanyService companyService) {
-        this.studentService = studentService;
-        this.courseService = courseService;
-        this.companyService = companyService;
-    }
 
     @GetMapping("/allStudents/{companyId}")
     private String getAllStudents(@PathVariable("companyId")Long companyId, Model model,@ModelAttribute("course")Course course) {

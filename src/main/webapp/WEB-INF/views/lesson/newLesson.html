@@ -9,7 +9,7 @@
 </head>
 <body>
 <div>
-    <form th:action="@{saveLesson}"
+    <form th:action="@{/lessons/{courseId}/saveLesson(courseId=${courseId})}"
           th:object="${newLesson}"
           method="post"
           style="text-align:center; margin-top:90px; font-size: 15px;">

@@ -19,7 +19,7 @@
 <body>
 <form th:action="@{/lessons/{courseId}/{lessonId}/saveUpdateLesson(courseId=${courseId},lessonId=${lessonId})}"
       th:object="${lesson}"
-      th:method="post"
+      th:method="patch"
       style="text-align:center; margin-top:90px; font-size: 15px;">
     <div><input name="Lesson Name" th:field="*{lessonName}"></div>
 

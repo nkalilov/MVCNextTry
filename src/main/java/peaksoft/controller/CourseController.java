@@ -36,26 +36,26 @@ public class CourseController {
         Company company = companyService.getCompanyById(companyId);
 //        List<Instructor> instructors = company.getInstructors();
         model.addAttribute("instructors",instructorService.getAllInstructor(companyId));
-        return "course/innerPageCompany";
+        return "courses/innerPageCompany";
     }
 
     @GetMapping("{companyId}/newCourse")
     private String newCourse(@PathVariable("companyId") Long id, Model model) {
         model.addAttribute("newCourse", new Course());
         model.addAttribute("companyId", id);
-        return "course/newCourse";
+        return "courses/newCourses";
     }
 
     @PostMapping("{companyId}/saveCourse")
     private String saveCourse(@PathVariable("companyId") Long companyId, @ModelAttribute("newCourse") Course course) {
         courseService.saveCourse(companyId, course);
-        return "redirect:/courses/allCourses/ " + companyId;
+        return "redirect:/courses/allCourses/" + companyId;
     }
 
     @GetMapping("/getCourse/{courseId}")
     private String getCourseById(@PathVariable("courseId") Long courseId, Model model) {
         model.addAttribute("course", courseService.getCourseById(courseId));
-        return "course/innerPageCompany";
+        return "courses/innerPageCompany";
     }
 
     @GetMapping("/update/{courseId}")
@@ -63,7 +63,7 @@ public class CourseController {
         Course course = courseService.getCourseById(courseId);
         model.addAttribute("course", course);
         model.addAttribute("compId", course.getCompany().getCompanyId());
-        return "course/updateCourse";
+        return "courses/updateCourse";
     }
 
     @PostMapping("/{companyId}/{courseId}/saveUpdateCourse")
@@ -75,7 +75,7 @@ public class CourseController {
     }
 
 
-    @PostMapping("/{id}/{courseId}/delete")
+    @DeleteMapping("/{id}/{courseId}/delete")
     private String deleteCourse(@PathVariable("id") Long id, @PathVariable("courseId") Long courseId) {
         courseService.deleteCourseById(id);
         return "redirect:/courses/allCourses/ " + courseId;
